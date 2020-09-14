@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+   <meta charset="UTF-8" />
+   <link rel="stylesheet" href="styles.css" type="text/css">
+   <title>Flag game</title>
+   <script>
+     function removeOneFlag(){
+       let flags = document.getElementsByClassName("flag");
+       if (flags.length === 1)
+        alert("You won!");
+       flags[flags.length - 1].parentNode.removeChild(flags[flags.length - 1]);
+     }
+
+     function removeTwoFlags(){
+      let flags = document.getElementsByClassName("flag");
+       if (flags.length === 2)
+        alert("You won!");
+       flags[flags.length - 1].parentNode.removeChild(flags[flags.length - 1]);
+       flags[flags.length - 1].parentNode.removeChild(flags[flags.length - 1]);
+     }
+
+     function resetGame(){
+       while(document.getElementsByClassName("flag").length < 21){
+        let flagImg = document.createElement("img");
+        flagImg.src="flag.png";
+        flagImg.className="flag";
+        document.getElementById("flags").appendChild(flagImg);
+       }
+     }
+   </script>
+ </head>
+ <body>
+    <div id="flags">
+      <script>
+        resetGame();
+      </script>
+    </div>
+    <div id="controls">
+      <button id="take-one" onclick="removeOneFlag()">Take 1</button>
+      <button id="take-two" onclick="removeTwoFlags()">Take 2</button>
+      <button id="reset" onclick="resetGame()">Reset</button>
+  </div>
+ </body>
+</html>
